@@ -2,6 +2,7 @@
 {
 	internal class Program
 	{
+
 		static void Main(string[] args)
 		{
 			// Initialization
@@ -27,26 +28,28 @@
 
 			int option = 0;
 
-		PROGRAM_CONTINUE:
 			while (true)
 			{
-				Console.Clear();
-				option = EXT.ReadInt(msg);
-				if (option >= 0 && option <= 2) break;
-			}
+				while (true)
+				{
+					Console.Clear();
+					option = EXT.ReadInt(msg);
+					if (option >= 0 && option <= 2) break;
+				}
 
-			IProgram mode = option switch
-			{
-				1 => new StudentMode(),
-				2 => new TeacherMode(),
-				_ => null,
-			};
+				IProgram mode = option switch
+				{
+					1 => new StudentMode(),
+					2 => new TeacherMode(),
+					_ => null,
+				};
 
-			if (mode != null)
-			{
-				var jumpBack = mode.Main();
-				
-				if (jumpBack) goto PROGRAM_CONTINUE;
+				if (mode != null)
+				{
+					var jumpBack = mode.Main();
+
+					if (!jumpBack) break;
+				}
 			}
 
 			return;
