@@ -7,7 +7,8 @@ namespace CatalogProj
 	{
 		public bool Main()
 		{
-			EXT.ReadInt("press anything to continue: teacher");
+			Console.Clear();
+			EXT.WaitForKeyInput("press anything to continue: teacher");
 
 			return true;
 		}

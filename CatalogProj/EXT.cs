@@ -18,15 +18,22 @@ namespace CatalogProj
 			if (res == null)
 			{
 				Console.WriteLine("result string was null");
+				WaitForKeyInput();
 				return int.MaxValue;
 			}
 			if (!int.TryParse(res, out int val))
 			{
-				Console.WriteLine($"ERROR AT PARSING: '{res}'");
+				Console.WriteLine($"'{res}' is not an integer (ex: 1, 12, -582)");
+				WaitForKeyInput();
 				return int.MaxValue;
 			}
 
 			return val;
+		}
+		public static void WaitForKeyInput(string? msg = null)
+		{
+			if (msg != null) Console.WriteLine(msg);
+			Console.ReadKey();
 		}
 	}
 }

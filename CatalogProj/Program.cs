@@ -6,7 +6,7 @@
 		static void Main(string[] args)
 		{
 			// Initialization
-			Database.Load();
+			Database.Database.Load();
 
 			AppDomain.CurrentDomain.ProcessExit += OnProccessExit;
 			
@@ -50,6 +50,7 @@
 
 					if (!jumpBack) break;
 				}
+				else break;
 			}
 
 			return;
@@ -57,10 +58,8 @@
 
 		private static void OnProccessExit(object? sender, EventArgs e)
 		{
-
+			Database.Database.Save();
 			
-			// Database.Save();
-			// Console.WriteLine("SAVED");
 		}
 
 
