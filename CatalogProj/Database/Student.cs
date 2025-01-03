@@ -5,21 +5,24 @@ namespace CatalogProj.Database
 {
 	public class Student
 	{
+		const int YEARS = 3;
+
 		public List<SubjectYear> StudyYears { get; private set; }
 
 
 		public Student()
 		{
 			StudyYears = new List<SubjectYear>();
-			for (int i = 0; i < 4; i++)
+			for (int i = 0; i < YEARS; i++)
 			{
-				StudyYears.Add(new SubjectYear());
+				StudyYears.Add(new SubjectYear(i));
 			}
 		}
-		public Student(byte[] data)
+		
+		public bool Load(byte[] data)
 		{
-			StudyYears = new List<SubjectYear>();
 
+			return false;
 		}
 
 	}
