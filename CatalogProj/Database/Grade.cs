@@ -6,6 +6,7 @@ namespace CatalogProj.Database
 	public class Grade
 	{
 		public float Value { get; private set; }
+		// public Contestation AttachedContestation { get; private set; }
 
 		public Grade(float value)
 		{
