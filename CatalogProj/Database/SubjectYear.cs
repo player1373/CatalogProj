@@ -52,6 +52,7 @@ namespace CatalogProj.Database
 			SubjectType.Discrete_Mathematics,
 			},
 
+
 			// YEAR 2 ----------------
 			new SubjectType[] // sem 1
 			{
@@ -71,6 +72,7 @@ namespace CatalogProj.Database
 			SubjectType.Digital_Logic_Design,
 			SubjectType.Project_Management,
 			},
+
 
 			// YEAR 3 ----------------
 			new SubjectType[] // sem 1

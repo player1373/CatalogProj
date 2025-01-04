@@ -30,12 +30,8 @@
 
 			while (true)
 			{
-				while (true)
-				{
-					Console.Clear();
-					option = EXT.ReadInt(msg);
-					if (option >= 0 && option <= 2) break;
-				}
+				Console.Clear();
+				option = EXT.ReadIntInRange(0, 2, msg);
 
 				IProgram mode = option switch
 				{

@@ -15,6 +15,9 @@ namespace CatalogProj.Database
 			IsRegisteredTo = false;
 		}
 
-
+		public void SetRegistered(bool value)
+		{
+			IsRegisteredTo = value;
+		}
 	}
 }

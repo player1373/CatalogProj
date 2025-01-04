@@ -20,7 +20,7 @@ namespace CatalogProj.Database
 		None,
 
 		// Year 1 Sem 1
-		Year1Semester1 = 0x00_01_00_00,
+		//Year1Semester1 = 0x00_01_00_00,
 		
 		Introduction_To_Computer_Science,
 		Calculus_I,
@@ -30,7 +30,7 @@ namespace CatalogProj.Database
 		Introduction_To_Digital_Systems,
 
 		// Year 1 Sem 2
-		Year1Semester2 = 0x00_02_00_00,
+		//Year1Semester2 = 0x00_02_00_00,
 		
 		Data_Structures_And_Algorithms,
 		Linear_Algebra,
@@ -40,7 +40,7 @@ namespace CatalogProj.Database
 		Discrete_Mathematics,
 
 		// Year 2 Sem 1
-		Year2Semester1 = 0x00_04_00_00,
+		//Year2Semester1 = 0x00_04_00_00,
 		
 		Computer_Architecture,
 		Probability_And_Statistics,
@@ -50,7 +50,7 @@ namespace CatalogProj.Database
 		Professional_Communication,
 
 		// Year 2 Sem 2
-		Year2Semester2 = 0x00_08_00_00,
+		//Year2Semester2 = 0x00_08_00_00,
 		
 		Theory_Of_Computation,
 		Networking_Fundamentals,
@@ -60,7 +60,7 @@ namespace CatalogProj.Database
 		Project_Management,
 
 		// Year 3 Sem 1
-		Year3Semester1 = 0x00_10_00_00,
+		//Year3Semester1 = 0x00_10_00_00,
 		
 		Artificial_Intelligence,
 		Mobile_Application_Development,
@@ -70,7 +70,7 @@ namespace CatalogProj.Database
 		Research_Methodologies,
 
 		// Year 3 Sem 2
-		Year3Semester2 = 0x00_20_00_00,
+		//Year3Semester2 = 0x00_20_00_00,
 		
 		Machine_Learning_Fundamentals,
 		Cloud_Computing,
