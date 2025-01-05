@@ -1,6 +1,8 @@
 ﻿// REACTOR //
 
 
+using System.Numerics;
+
 namespace CatalogProj
 {
 	/// <summary>
@@ -73,17 +75,25 @@ namespace CatalogProj
 			}
 			return a;
 		}
-		#region [//]
-		/// <summary>
-		/// Reads the year and semester from console and returns them as indexes 
-		/// <br></br>
-		/// <br>Example: the input from the user is: <c>'year:1' 'semester:2'</c></br>
-		/// <br>The return values will be: <c>'year = 0' 'semester = 1'</c></br>
-		/// </summary>
-		/// <param name="year"></param>
-		/// <param name="semester"></param>
-		#endregion
-		public static void ReadYearAndSemester(out int year, out int semester)
+
+		public static void ReadYear(out int year)
+        {
+            year = ReadIntInRange(1, 3, "Selecteaza anul de studiu (1, 2 sau 3):");
+            year -= 1;
+        }
+
+        #region [//]
+        /// <summary>
+        /// Reads the year and semester from console and returns them as indexes 
+        /// <br></br>
+        /// <br>Example: the input from the user is: <c>'year:1' 'semester:2'</c></br>
+        /// <br>The return values will be: <c>'year = 0' 'semester = 1'</c></br>
+        /// </summary>
+        /// <param name="year"></param>
+        /// <param name="semester"></param>
+        #endregion
+
+        public static void ReadYearAndSemester(out int year, out int semester)
 		{
 			year = ReadIntInRange(1, 3, "Selecteaza anul de studiu (1, 2 sau 3):");
 			semester = ReadIntInRange(1, 2, "Selecteaza semestrul 1 sau 2:");

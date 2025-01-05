@@ -27,10 +27,58 @@ namespace CatalogProj.Database
 		}
 
 
+		public Dictionary<SubjectType, Subject> GetSemester(int semester)
+        {
+#pragma warning disable CS8603 // Possible null reference return.
+            return semester switch
+            {
+                0 => FirstSemester,
+                1 => SecondSemester,
+                _ => null,
+            };
+#pragma warning restore CS8603 // Possible null reference return.
+        }
 
 
+		private float CalculateAverageForSemester(int semester)
+		{
+			var subjects = GetSemester(semester).ToArray();
+			if (subjects == null) return 0;
 
-		private static readonly SubjectType[][] DefaultSubjects = new SubjectType[][]
+			float sum = 0;
+			int gradecounter = 0;
+
+			foreach (var keyValuePair in subjects)
+			{
+				if (IsFacultative(keyValuePair.Key)) continue;
+
+				var subject = keyValuePair.Value;
+
+				foreach (var grade in subject.ActivityGrades)
+				{
+					sum += grade.Value;
+					gradecounter++;
+				}
+
+				foreach (var grade in subject.ExamGrades)
+				{
+					sum += grade.Value;
+					gradecounter++;
+				}
+			}
+			return sum / gradecounter;
+        }
+
+		public float CalculateAverageForYear()
+		{ 
+			return (CalculateAverageForSemester(0) + CalculateAverageForSemester(1)) / 2;
+        }
+		private bool IsFacultative(SubjectType type)
+		{
+			return type.HasFlag(SubjectType.Facultative);
+        }
+
+        private static readonly SubjectType[][] DefaultSubjects = new SubjectType[][]
 		{
 			// YEAR 1 ----------------
 			new SubjectType[] // sem 1
