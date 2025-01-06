@@ -3,27 +3,27 @@
 
 namespace CatalogProj.Database
 {
-	public class Student
-	{
-		const int YEARS = 3;
+    public class Student
+    {
+        const int YEARS = 3;
 
-		public List<SubjectYear> StudyYears { get; private set; }
+        public List<SubjectYear> StudyYears { get; private set; }
 
 
-		public Student()
-		{
-			StudyYears = new List<SubjectYear>();
-			for (int i = 0; i < YEARS; i++)
-			{
-				StudyYears.Add(new SubjectYear(i));
-			}
-		}
-		
-		public bool Load(byte[] data)
-		{
+        public Student()
+        {
+            StudyYears = new List<SubjectYear>();
+            for (int i = 0; i < YEARS; i++)
+            {
+                StudyYears.Add(new SubjectYear(i));
+            }
+        }
 
-			return false;
-		}
+        public bool Load(byte[] data)
+        {
+
+            return false;
+        }
 
         public Subject? ReadSubject(int year, int semester)
         {
@@ -68,6 +68,19 @@ namespace CatalogProj.Database
                     Console.WriteLine($"\t{nota.Value}");
 
             EXT.WaitForKeyInput();
+        }
+
+        public float CalculateMultiAnnualAverage()
+        {
+            float sum = 0;
+            int yearCounter = 0;
+
+            foreach (var year in StudyYears)
+            {
+                sum += year.CalculateAverageForYear();
+                yearCounter++;
+            }
+            return sum / yearCounter;
         }
     }
 }

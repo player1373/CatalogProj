@@ -90,7 +90,10 @@ namespace CatalogProj
                     EXT.WaitForKeyInput();
                     break;
                 case 3:
-                    //CalculateMultiAnnualAverage();
+                    Console.Clear();
+                    float avgMultiAnnual = Database.Database.Student.CalculateMultiAnnualAverage();
+                    Console.WriteLine($"Media multianuala este: {avgMultiAnnual}");
+                    EXT.WaitForKeyInput();
                     break;
                 default:
                     Console.WriteLine("Optiune invalida.");
