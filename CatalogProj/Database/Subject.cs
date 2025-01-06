@@ -13,7 +13,29 @@ namespace CatalogProj.Database
 			ActivityGrades = new List<Grade>();
 			ExamGrades = new List<Grade>();
 		}
-	}
+
+        public float CalculateAverage()
+        {
+			if (ActivityGrades.Count == 0 && ExamGrades.Count == 0) return 0;
+			if (ActivityGrades.Count == 0) return ExamGrades.Average(nota => nota.Value);
+			if (ExamGrades.Count == 0) return ActivityGrades.Average(nota => nota.Value);
+
+            float activitySum = 0;
+            foreach (var nota in ActivityGrades)
+                activitySum += nota.Value;
+
+			activitySum /= ActivityGrades.Count;
+
+            float examSum = 0;
+            foreach (var nota in ExamGrades)
+                examSum += nota.Value;
+
+            examSum /= ExamGrades.Count;
+
+            float Average = (activitySum + examSum) / 2;
+			return Average;
+        }
+    }
 
 	public enum SubjectType : uint
 	{
