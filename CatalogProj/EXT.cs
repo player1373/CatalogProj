@@ -32,7 +32,29 @@ namespace CatalogProj
 
 			return true;
 		}
-		public static bool ReadYesNo(string? msg)
+
+        public static bool ReadFloat(string? msg, out float result)
+        {
+            if (msg != null) Console.WriteLine(msg);
+            result = float.MaxValue;
+
+            string? res = Console.ReadLine();
+            if (res == null)
+            {
+                Console.WriteLine("result string was null");
+                WaitForKeyInput();
+                return false;
+            }
+            if (!float.TryParse(res, out result))
+            {
+                Console.WriteLine($"'{res}' nu e un numar real (ex: 7.13, 12.2, -582.6)");
+                WaitForKeyInput();
+                return false;
+            }
+            return true;
+        }
+
+        public static bool ReadYesNo(string? msg)
 		{
 			while (true)
 			{
@@ -78,7 +100,29 @@ namespace CatalogProj
 			return a;
 		}
 
-		public static void ReadYear(out int year)
+        public static float ReadFloatInRange(float minInclusive, float maxInclusive, string? msg)
+        {
+            string? errorMessage = null;
+            float a;
+            while (true)
+            {
+                Console.Clear();
+                if (!ReadFloat(msg, out a))
+                {
+                    errorMessage = null;
+                    continue;
+                }
+
+                if (a >= minInclusive && a <= maxInclusive) break;
+                errorMessage = $"{a} este in afara parametriilor specificati [{minInclusive}, {maxInclusive}]\n";
+                Console.Write(errorMessage);
+                EXT.WaitForKeyInput();
+            }
+            return a;
+        }
+
+
+        public static void ReadYear(out int year)
         {
             year = ReadIntInRange(1, 3, "Selecteaza anul de studiu (1, 2 sau 3):");
             year -= 1;

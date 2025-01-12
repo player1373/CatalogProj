@@ -34,13 +34,20 @@ namespace CatalogProj
                     case 2:
                         EnrollSubject();
                         break;
-                    case 3: break;
-                    case 4: break;
+                    case 3:
+                        CreateContestation();
+                        break;
+                    case 4:
+                        ViewConstestations();
+                        break;
                     case 5:
                         CalculeazaMedia();
                         break;
                     case 6: return true;
                     case 0: return false;
+                    default:
+                        Console.WriteLine("Optiune invalida.");
+                        break; 
                 }
             }
         }
@@ -51,12 +58,51 @@ namespace CatalogProj
             var a = Database.Database.Student.ReadSubject(year, semester);
             if (a == null) return;
             Database.Database.Student.DisplaySubjectDetails(a);
+            EXT.WaitForKeyInput();
         }
 
         private void EnrollSubject()
         {
             Console.Clear();
             SideSubjectManager.SubscribeToSubject();
+            EXT.WaitForKeyInput();
+        }
+
+        private void CreateContestation()
+        {
+            Console.Clear();
+            EXT.ReadYearAndSemester(out int year, out int semester);
+            var (subj,type) = Database.Database.Student.ReadSubjectWithType(year, semester);
+            if (subj == null)
+            {
+                Console.WriteLine("Disciplina invalida");
+                EXT.WaitForKeyInput();
+                return;
+            }
+
+            var nota = subj.SelectGrade();
+            if (nota == null)
+            {
+                Console.WriteLine("Nu exista note la aceasta disciplina");
+                EXT.WaitForKeyInput();
+                return;
+            }
+
+            Console.WriteLine("Mesajul tau:");
+            string? msg = Console.ReadLine();
+            if (msg == null) msg = "";
+
+            Database.ContestationManager.CreateContestation(type, nota, msg);
+            EXT.WaitForKeyInput();
+        }
+
+        private void ViewConstestations()
+        {
+            Console.Clear();
+            var contestation = Database.ContestationManager.ViewAndGetContestation();
+            if (contestation == null) return;
+
+            EXT.WaitForKeyInput();
         }
 
         private void CalculeazaMedia()

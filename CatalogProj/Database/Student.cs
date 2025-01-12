@@ -49,6 +49,30 @@ namespace CatalogProj.Database
             return pair[indexMaterie].Value;
         }
 
+        public (Subject?, SubjectType) ReadSubjectWithType(int year, int semester)
+        {
+            var dict = StudyYears[year].GetSemester(semester);
+            string msg = "";
+            if (dict == null)
+            {
+                msg = "No subjects found.";
+                return (null, SubjectType.None);
+            }
+
+            var pair = dict.ToArray();
+
+            msg = "";
+            for (int i = 0; i < pair.Length; i++)
+            {
+                var el = pair[i];
+                msg += $"{i}. {el.Key.AsString()}\n";
+            }
+
+            int indexMaterie = EXT.ReadIntInRange(0, pair.Length - 1, msg);
+
+            return (pair[indexMaterie].Value, pair[indexMaterie].Key);
+        }
+
         public void DisplaySubjectDetails(Subject subject)
         {
             Console.Clear();

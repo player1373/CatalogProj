@@ -35,6 +35,44 @@ namespace CatalogProj.Database
             float Average = (activitySum + examSum) / 2;
 			return Average;
         }
+
+        public Grade? SelectGrade()
+        {
+            int activ = 0;
+            int exam = 0;
+            string msg = "";
+
+            if (ActivityGrades.Count != 0)
+            {
+                msg += "Note la activitate:\n";
+                for (int i = 0; i < ActivityGrades.Count; i++)
+                {
+                    msg += $"\t{++activ}. {ActivityGrades[i]}\n";
+                }
+            }
+
+            if (ExamGrades.Count != 0)
+            {
+                msg += "Note la examen:\n";
+                for (int i = 0; i < ExamGrades.Count; i++)
+                {
+                    msg += $"\t{activ + ++exam}. {ExamGrades[i]}\n";
+                }
+            }
+
+            if (activ + exam == 0) return null;
+
+            int index = EXT.ReadIntInRange(1, activ + exam, msg) - 1;
+            if (index < activ)
+            {
+                return ActivityGrades[index];
+            }
+            else
+            {
+                index -= activ;
+                return ExamGrades[index];
+            }
+        }
     }
 
 	public enum SubjectType : uint
