@@ -1,6 +1,7 @@
 ﻿// REACTOR //
 
 
+using CatalogProj.Database;
 using System.Numerics;
 
 namespace CatalogProj
@@ -24,7 +25,7 @@ namespace CatalogProj
 			}
 			if (!int.TryParse(res, out result))
 			{
-				Console.WriteLine($"'{res}' nu e un intreg (ex: 1, 12, -582)");
+				Console.WriteLine($"'{res}' nu e un numar intreg (ex: 1, 12, -582)");
 				WaitForKeyInput();
 				return false;
 			}
@@ -63,7 +64,6 @@ namespace CatalogProj
 			while (true)
 			{
 				Console.Clear();
-				Console.Write(errorMessage);
 				if (!ReadInt(msg, out a))
 				{
 					errorMessage = null;
@@ -72,6 +72,8 @@ namespace CatalogProj
 
 				if (a >= minInclusive && a <= maxInclusive) break;
 				errorMessage = $"{a} este in afara parametriilor specificati [{minInclusive}, {maxInclusive}]\n";
+				Console.Write(errorMessage);
+				EXT.WaitForKeyInput();
 			}
 			return a;
 		}
@@ -100,6 +102,12 @@ namespace CatalogProj
 
 			year -= 1;
 			semester -= 1;
+		}
+	
+	
+		public static string AsString(this SubjectType s)
+		{
+			return s.ToString().Replace('_', ' ');
 		}
 	}
 }

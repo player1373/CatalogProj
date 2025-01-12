@@ -41,7 +41,7 @@ namespace CatalogProj.Database
             for (int i = 0; i < pair.Length; i++)
             {
                 var el = pair[i];
-                msg += $"{i}. {el.Key.ToString().Replace('_', ' ')}\n";
+                msg += $"{i}. {el.Key.AsString()}\n";
             }
 
             int indexMaterie = EXT.ReadIntInRange(0, pair.Length - 1, msg);

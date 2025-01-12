@@ -112,7 +112,7 @@ namespace CatalogProj.Database
 				var current = subjList[i];
 				if (current.IsRegisteredTo) break;
 
-				string subjName = current.Type.ToString().Replace('_', ' ');
+				string subjName = current.Type.AsString();
 				subjectSelectMessage += $"{i}. {subjName}\n";
 				maxIndex++;
 			}
