@@ -62,6 +62,10 @@ namespace CatalogProj.Database
 		}
 		public static void CreateContestation(SubjectType subject, Grade grade, string additionalMessage)
 		{
+			if (!contestations.ContainsKey(subject))
+			{
+				contestations.Add(subject, new List<Contestation>());
+			}
 			contestations[subject].Add(new Contestation(grade, additionalMessage));
 		}
 	}

@@ -58,7 +58,7 @@ namespace CatalogProj
             var a = Database.Database.Student.ReadSubject(year, semester);
             if (a == null) return;
             Database.Database.Student.DisplaySubjectDetails(a);
-            EXT.WaitForKeyInput();
+            //EXT.WaitForKeyInput();
         }
 
         private void EnrollSubject()

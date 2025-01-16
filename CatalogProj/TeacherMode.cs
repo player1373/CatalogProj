@@ -18,7 +18,7 @@ namespace CatalogProj
             while (true)
             {
                 Console.Clear();
-                int option = EXT.ReadIntInRange(0, 3, msg);
+                int option = EXT.ReadIntInRange(0, 4, msg);
                 switch (option)
                 {
                     case 1:
@@ -44,10 +44,13 @@ namespace CatalogProj
             var a = Database.Database.Student.ReadSubject(year, semester);
             if (a == null) return;
 
-            int option = EXT.ReadIntInRange(1, 2, "1. Nota activitate \n2.Nota examen");
+            int option = EXT.ReadIntInRange(1, 2, "1. Nota activitate \n2. Nota examen");
             float nota = EXT.ReadFloatInRange(1, 10, "Introduceti nota:");
             var list = option == 1 ? a.ActivityGrades : a.ExamGrades;
             list.Add(new Database.Grade(nota));
+
+			Console.Clear();
+			Console.WriteLine("Adaugat cu succes.");
             EXT.WaitForKeyInput();
         }
 

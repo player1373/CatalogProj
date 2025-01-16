@@ -47,7 +47,7 @@ namespace CatalogProj.Database
                 msg += "Note la activitate:\n";
                 for (int i = 0; i < ActivityGrades.Count; i++)
                 {
-                    msg += $"\t{++activ}. {ActivityGrades[i]}\n";
+                    msg += $"\t{++activ}. {ActivityGrades[i].Value}\n";
                 }
             }
 
@@ -56,7 +56,7 @@ namespace CatalogProj.Database
                 msg += "Note la examen:\n";
                 for (int i = 0; i < ExamGrades.Count; i++)
                 {
-                    msg += $"\t{activ + ++exam}. {ExamGrades[i]}\n";
+                    msg += $"\t{activ + ++exam}. {ExamGrades[i].Value}\n";
                 }
             }
 
