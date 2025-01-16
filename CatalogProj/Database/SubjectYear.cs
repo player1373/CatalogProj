@@ -66,6 +66,7 @@ namespace CatalogProj.Database
 					gradecounter++;
 				}
 			}
+			if (gradecounter == 0) return 0;
 			return sum / gradecounter;
         }
 
